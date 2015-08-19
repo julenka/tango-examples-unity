@@ -23,7 +23,7 @@ public class AugmentedRealityGUIController : MonoBehaviour
     public const float UI_BUTTON_SIZE_X = 125.0f;
     public const float UI_BUTTON_SIZE_Y = 65.0f;
     public const float UI_BUTTON_GAP_X = 5.0f;
-    public const float UI_CAMERA_BUTTON_OFFSET = UI_BUTTON_SIZE_X + UI_BUTTON_GAP_X; 
+    public const float UI_CAMERA_BUTTON_OFFSET = UI_BUTTON_SIZE_X + UI_BUTTON_GAP_X;
     public const float UI_LABEL_OFFSET = UI_LABEL_GAP_Y + UI_LABEL_SIZE_Y;
     public const float UI_FPS_LABEL_START_Y = UI_LABEL_START_Y + UI_LABEL_OFFSET;
     public const float UI_EVENT_LABEL_START_Y = UI_FPS_LABEL_START_Y + UI_LABEL_OFFSET;
@@ -31,12 +31,12 @@ public class AugmentedRealityGUIController : MonoBehaviour
     public const float UI_DEPTH_LABLE_START_Y = UI_POSE_LABEL_START_Y + UI_LABEL_OFFSET;
     public const string UI_FLOAT_FORMAT = "F3";
     public const string UI_FONT_SIZE = "<size=25>";
-    
+
     public const float UI_TANGO_VERSION_X = UI_LABEL_START_X;
     public const float UI_TANGO_VERSION_Y = UI_LABEL_START_Y;
     public const float UI_TANGO_APP_SPECIFIC_START_X = UI_TANGO_VERSION_X;
     public const float UI_TANGO_APP_SPECIFIC_START_Y = UI_TANGO_VERSION_Y + (UI_LABEL_OFFSET * 2);
-    
+
     public const string UX_SERVICE_VERSION = "Service version: {0}";
     public const string UX_TANGO_SERVICE_VERSION = "Tango service version: {0}";
     public const string UX_TANGO_SYSTEM_EVENT = "Tango system event: {0}";
@@ -60,24 +60,24 @@ public class AugmentedRealityGUIController : MonoBehaviour
     /// The point cloud object in the scene.
     /// </summary>
     public TangoPointCloud m_pointCloud;
-    
+
     private const float FPS_UPDATE_FREQUENCY = 1.0f;
     private string m_fpsText;
     private int m_currentFPS;
     private int m_framesSinceUpdate;
     private float m_accumulation;
     private float m_currentTime;
-    
+
     private Rect m_label;
     private TangoApplication m_tangoApplication;
     private string m_tangoServiceVersion;
 
     private GameObject m_placedLocation = null;
-    
+
     /// <summary>
     /// Unity Start() callback, we set up some initial values here.
     /// </summary>
-    public void Start() 
+    public void Start()
     {
         m_currentFPS = 0;
         m_framesSinceUpdate = 0;
@@ -87,11 +87,11 @@ public class AugmentedRealityGUIController : MonoBehaviour
         m_tangoApplication = FindObjectOfType<TangoApplication>();
         m_tangoServiceVersion = TangoApplication.GetTangoServiceVersion();
     }
-    
+
     /// <summary>
     /// Updates UI and handles player input.
     /// </summary>
-    public void Update() 
+    public void Update()
     {
         m_currentTime += Time.deltaTime;
         ++m_framesSinceUpdate;
@@ -105,9 +105,9 @@ public class AugmentedRealityGUIController : MonoBehaviour
             m_fpsText = "FPS: " + m_currentFPS;
         }
 
-        _UpdatePlacedLocation();
+        // _UpdatePlacedLocation();
     }
-    
+
     /// <summary>
     /// Display simple GUI.
     /// </summary>
@@ -117,49 +117,49 @@ public class AugmentedRealityGUIController : MonoBehaviour
         {
             Color oldColor = GUI.color;
             GUI.color = Color.white;
-            
+
             GUI.color = Color.black;
-            GUI.Label(new Rect(UI_LABEL_START_X, 
-                               UI_LABEL_START_Y, 
-                               UI_LABEL_SIZE_X, 
-                               UI_LABEL_SIZE_Y), 
+            GUI.Label(new Rect(UI_LABEL_START_X,
+                               UI_LABEL_START_Y,
+                               UI_LABEL_SIZE_X,
+                               UI_LABEL_SIZE_Y),
                       UI_FONT_SIZE + String.Format(UX_TANGO_SERVICE_VERSION, m_tangoServiceVersion) + "</size>");
-            
-            GUI.Label(new Rect(UI_LABEL_START_X, 
-                               UI_FPS_LABEL_START_Y, 
-                               UI_LABEL_SIZE_X, 
+
+            GUI.Label(new Rect(UI_LABEL_START_X,
+                               UI_FPS_LABEL_START_Y,
+                               UI_LABEL_SIZE_X,
                                UI_LABEL_SIZE_Y),
                       UI_FONT_SIZE + m_fpsText + "</size>");
-            
+
             // MOTION TRACKING
-            GUI.Label(new Rect(UI_LABEL_START_X, 
+            GUI.Label(new Rect(UI_LABEL_START_X,
                                UI_POSE_LABEL_START_Y - UI_LABEL_OFFSET,
-                               UI_LABEL_SIZE_X, 
+                               UI_LABEL_SIZE_X,
                                UI_LABEL_SIZE_Y),
                       UI_FONT_SIZE + String.Format(UX_TARGET_TO_BASE_FRAME, "Device", "Start") + "</size>");
-            
+
             Vector3 pos = m_arScreen.transform.position;
             Quaternion quat = m_arScreen.transform.rotation;
-            string positionString = pos.x.ToString(UI_FLOAT_FORMAT) + ", " + 
-                pos.y.ToString(UI_FLOAT_FORMAT) + ", " + 
+            string positionString = pos.x.ToString(UI_FLOAT_FORMAT) + ", " +
+                pos.y.ToString(UI_FLOAT_FORMAT) + ", " +
                     pos.z.ToString(UI_FLOAT_FORMAT);
-            string rotationString = quat.x.ToString(UI_FLOAT_FORMAT) + ", " + 
-                quat.y.ToString(UI_FLOAT_FORMAT) + ", " + 
-                    quat.z.ToString(UI_FLOAT_FORMAT) + ", " + 
+            string rotationString = quat.x.ToString(UI_FLOAT_FORMAT) + ", " +
+                quat.y.ToString(UI_FLOAT_FORMAT) + ", " +
+                    quat.z.ToString(UI_FLOAT_FORMAT) + ", " +
                     quat.w.ToString(UI_FLOAT_FORMAT);
             string statusString = String.Format(UX_STATUS,
                                                 _GetLoggingStringFromPoseStatus(m_arScreen.m_status),
                                                 _GetLoggingStringFromFrameCount(m_arScreen.m_frameCount),
                                                 positionString, rotationString);
-            GUI.Label(new Rect(UI_LABEL_START_X, 
+            GUI.Label(new Rect(UI_LABEL_START_X,
                                UI_POSE_LABEL_START_Y,
-                               UI_LABEL_SIZE_X, 
-                               UI_LABEL_SIZE_Y), 
+                               UI_LABEL_SIZE_X,
+                               UI_LABEL_SIZE_Y),
                       UI_FONT_SIZE + statusString + "</size>");
             GUI.color = oldColor;
         }
     }
-    
+
     /// <summary>
     /// Construct readable string from TangoPoseStatusType.
     /// </summary>
@@ -170,25 +170,25 @@ public class AugmentedRealityGUIController : MonoBehaviour
         string statusString;
         switch (status)
         {
-        case TangoEnums.TangoPoseStatusType.TANGO_POSE_INITIALIZING:
-            statusString = "initializing";
-            break;
-        case TangoEnums.TangoPoseStatusType.TANGO_POSE_INVALID:
-            statusString = "invalid";
-            break;
-        case TangoEnums.TangoPoseStatusType.TANGO_POSE_UNKNOWN:
-            statusString = "unknown";
-            break;
-        case TangoEnums.TangoPoseStatusType.TANGO_POSE_VALID:
-            statusString = "valid";
-            break;
-        default:
-            statusString = "N/A";
-            break;
+            case TangoEnums.TangoPoseStatusType.TANGO_POSE_INITIALIZING:
+                statusString = "initializing";
+                break;
+            case TangoEnums.TangoPoseStatusType.TANGO_POSE_INVALID:
+                statusString = "invalid";
+                break;
+            case TangoEnums.TangoPoseStatusType.TANGO_POSE_UNKNOWN:
+                statusString = "unknown";
+                break;
+            case TangoEnums.TangoPoseStatusType.TANGO_POSE_VALID:
+                statusString = "valid";
+                break;
+            default:
+                statusString = "N/A";
+                break;
         }
         return statusString;
     }
-    
+
     /// <summary>
     /// Reformat string from vector3 type for data logging.
     /// </summary>
@@ -202,13 +202,13 @@ public class AugmentedRealityGUIController : MonoBehaviour
         }
         else
         {
-            return string.Format("{0}, {1}, {2}", 
+            return string.Format("{0}, {1}, {2}",
                                  vec.x.ToString(UI_FLOAT_FORMAT),
                                  vec.y.ToString(UI_FLOAT_FORMAT),
                                  vec.z.ToString(UI_FLOAT_FORMAT));
         }
     }
-    
+
     /// <summary>
     /// Reformat string from quaternion type for data logging.
     /// </summary>
@@ -229,7 +229,7 @@ public class AugmentedRealityGUIController : MonoBehaviour
                                  quat.w.ToString(UI_FLOAT_FORMAT));
         }
     }
-    
+
     /// <summary>
     /// Return a string to the get logging from frame count.
     /// </summary>
@@ -246,7 +246,7 @@ public class AugmentedRealityGUIController : MonoBehaviour
             return frameCount.ToString();
         }
     }
-    
+
     /// <summary>
     /// Return a string to get logging of FrameDeltaTime.
     /// </summary>
@@ -273,7 +273,7 @@ public class AugmentedRealityGUIController : MonoBehaviour
         {
             return;
         }
-        
+
         Touch t = Input.GetTouch(0);
         if (t.phase != TouchPhase.Began)
         {
@@ -295,7 +295,7 @@ public class AugmentedRealityGUIController : MonoBehaviour
         float closestDepth = cam.WorldToScreenPoint(m_pointCloud.m_points[closestIndex]).z;
         Ray touchRay = cam.ScreenPointToRay(new Vector3(t.position[0], t.position[1], 0));
         Vector3 pos = touchRay.origin + (touchRay.direction * closestDepth);
-                
+
         Vector3 rot = cam.transform.eulerAngles;
         rot[0] = rot[2] = 0;
         m_placedLocation = (GameObject)Instantiate(m_prefabLocation, pos, Quaternion.Euler(rot));
