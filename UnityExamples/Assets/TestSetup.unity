@@ -1563,6 +1563,10 @@ Prefab:
       propertyPath: m_laserEmitterPrototype
       value: 
       objectReference: {fileID: 138668, guid: e753f7b77399ec24098147b9b760fe4e, type: 2}
+    - target: {fileID: 197810, guid: bf3c527067ab26f4ab4d65fce3015917, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf3c527067ab26f4ab4d65fce3015917, type: 2}
   m_IsPrefabParent: 0
@@ -1624,6 +1628,10 @@ Prefab:
     - target: {fileID: 197810, guid: bf3c527067ab26f4ab4d65fce3015917, type: 2}
       propertyPath: m_Name
       value: OrangePortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 197810, guid: bf3c527067ab26f4ab4d65fce3015917, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf3c527067ab26f4ab4d65fce3015917, type: 2}
@@ -1865,6 +1873,21 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ce9b74e069c7e54ba84b949b8af7419, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1697968672 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+  m_PrefabInternal: {fileID: 1860905031}
+--- !u!114 &1697968678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1697968672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1d7e2bcf2e67d468af20eae5be2fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1860905031
 Prefab:
   m_ObjectHideFlags: 0
