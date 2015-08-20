@@ -238,7 +238,7 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 174316, guid: a0788c3696e440d448e000a53ddb4d0e, type: 2}
   m_PrefabInternal: {fileID: 1055426837}
---- !u!114 &655548810
+--- !u!114 &655548814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -305,13 +305,15 @@ GameObject:
   - 4: {fileID: 723080235}
   - 198: {fileID: 723080234}
   - 199: {fileID: 723080233}
+  - 136: {fileID: 723080236}
+  - 114: {fileID: 723080237}
   m_Layer: 0
   m_Name: WinLevelParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &723080233
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -1413,6 +1415,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!136 &723080236
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 723080232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: .330000013
+  m_Height: 5.38000011
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 2.30200052}
+--- !u!114 &723080237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 723080232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4aa49a0f628d6b4da0237110a919600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &733217768
 Prefab:
   m_ObjectHideFlags: 0
