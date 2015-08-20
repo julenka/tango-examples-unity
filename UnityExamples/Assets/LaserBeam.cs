@@ -20,10 +20,10 @@ public class LaserBeam : MonoBehaviour
         RaycastHit raycastHit;
         if (Physics.Raycast(m_Emitter.transform.position, m_Emitter.transform.forward, out raycastHit))
         {
-            LaserReceiverHead laserReceiverHead = raycastHit.collider.gameObject.GetComponent<LaserReceiverHead>();
-            if (laserReceiverHead)
+            GameObject colliderObject = raycastHit.collider.gameObject;
+            if (colliderObject)
             {
-                laserReceiverHead.OnTriggerEnter();
+                colliderObject.SendMessage("OnTriggerEnter", options: SendMessageOptions.DontRequireReceiver);
             }
             m_lineRenderer.SetPosition(1, raycastHit.point);
         }
