@@ -11,7 +11,7 @@ public class LaserBeam : MonoBehaviour
     void Start()
     {
         m_lineRenderer = GetComponent<LineRenderer>();
-        _UpdateLaser();
+
     }
 
     private void _UpdateLaser()
@@ -20,6 +20,11 @@ public class LaserBeam : MonoBehaviour
         RaycastHit raycastHit;
         if (Physics.Raycast(m_Emitter.transform.position, m_Emitter.transform.forward, out raycastHit))
         {
+            LaserReceiverHead laserReceiverHead = raycastHit.collider.gameObject.GetComponent<LaserReceiverHead>();
+            if (laserReceiverHead)
+            {
+                laserReceiverHead.OnTriggerEnter();
+            }
             m_lineRenderer.SetPosition(1, raycastHit.point);
         }
         else
@@ -34,6 +39,6 @@ public class LaserBeam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        _UpdateLaser();
     }
 }
