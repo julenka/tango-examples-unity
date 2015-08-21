@@ -19,6 +19,9 @@ public class MyFPSController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if MOBILE_INPUT
+
+#else
         if (Input.GetButtonDown("Fire1"))
         {
             Debug.Log("Fire Orange");
@@ -29,6 +32,19 @@ public class MyFPSController : MonoBehaviour
             Debug.Log("Fire Blue");
             _PlacePortal(m_bluePortal);
         }
+#endif
+
+    }
+
+    public void FireBlue()
+    {
+        _PlacePortal(m_bluePortal);
+    }
+
+
+    public void FireOrange()
+    {
+        _PlacePortal(m_orangePortal);
     }
 
     private void _PlacePortal(GameObject portal)

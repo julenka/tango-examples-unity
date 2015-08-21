@@ -11,7 +11,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MotionTracking.unity
   - enabled: 0
     path: Assets/Scenes/PointCloud.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ExperimentalAugmentedReality.unity
   - enabled: 0
     path: Assets/Scenes/ExperimentalMeshBuilder.unity
@@ -21,3 +21,5 @@ EditorBuildSettings:
     path: Assets/Scenes/ExperimentalPersistentState/ExperimentalPersistentState_GameScene.unity
   - enabled: 0
     path: Assets/Scenes/ExperimentalVirtualReality.unity
+  - enabled: 1
+    path: Assets/Scenes/PortalHouse.unity

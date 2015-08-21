@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 443400}
   - 33: {fileID: 3363754}
   - 23: {fileID: 2300182}
+  - 114: {fileID: 11440640}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -43,6 +44,7 @@ GameObject:
   - 4: {fileID: 460228}
   - 33: {fileID: 3366244}
   - 23: {fileID: 2361636}
+  - 114: {fileID: 11452462}
   m_Layer: 0
   m_Name: Temperature
   m_TagString: Untagged
@@ -61,6 +63,8 @@ GameObject:
   - 33: {fileID: 3330750}
   - 23: {fileID: 2339548}
   - 136: {fileID: 13690298}
+  - 114: {fileID: 11412432}
+  - 114: {fileID: 11476698}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -229,6 +233,53 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11412432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a470cbad2b5de49b44a167589974db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11440640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1ee90c801faab42b8708a3d271c8b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_queues: b80b0000
+--- !u!114 &11452462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1ee90c801faab42b8708a3d271c8b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_queues: b80b0000
+--- !u!114 &11476698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1ee90c801faab42b8708a3d271c8b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_queues: b80b0000
 --- !u!136 &13690298
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -236,10 +287,10 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174316}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: .219999999
-  m_Height: .871008396
+  m_Radius: .319999993
+  m_Height: 1.38999999
   m_Direction: 1
   m_Center: {x: -4.37200069e-05, y: .539342225, z: 3.30805779e-06}
 --- !u!1001 &100100000
